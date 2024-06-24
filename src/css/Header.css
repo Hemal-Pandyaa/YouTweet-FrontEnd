@@ -1,0 +1,152 @@
+.header {
+    list-style-type: none;
+    display: absolute;
+    left: 0;
+    top: 0;
+    height: 80px;
+}
+
+/* .fake {
+    background-color: transparent !important;
+    height: 50px;
+} */
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hidden {
+    display: none;
+}
+
+
+.side {
+    position: fixed;
+    top: 80px;
+    left: 0;
+}
+
+.nav-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 20px;
+    letter-spacing: 2px;
+    height: 100%;
+    animation: come-in 0.2s ease-in forwards;
+}
+
+.nav-links {
+    list-style-type: none;
+    color: white;
+    text-decoration: none;
+    font-size: 28px;
+    text-align: left;
+    padding: 15px 30px;
+    border-radius: 8px;
+    position: relative;
+    align-items: center;
+    display: flex;
+}
+
+.nav-links:hover::after {
+    content:"";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgb(67, 67, 67);
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+    border-radius: inherit;
+}
+
+.bi {
+    margin-right: 10px;
+    padding: 0;
+}
+
+@keyframes come-in {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+.search-input {
+    padding: 10px 20px;
+    background-color: var(--primary-color-dark);
+    border-radius: 30px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border: 1px solid black;
+    width: 500px;
+    color: white;
+    font-size: 20px;
+}
+
+.search-input:focus-within {
+    outline: none;
+    border-color: white;
+    transition: border-color 0.3s linear;
+}
+
+.search-input::-webkit-search-cancel-button {
+    color: white;
+}
+
+.search-button {
+    padding: 6px 20px;
+    border-radius: 30px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border: 1px solid black;
+    background-color: var(--tretiary-color-dark);
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+}
+
+.search-button:hover {
+    border-color: white;
+    transition: border-color 0.2s linear;
+}
+
+.account-placeholder {
+    width: 50px;
+    height: 50px;
+}
+
+.create-button {
+    transition: rotate 0.5s ease-in;
+    margin-right: 20px;
+}
+
+.create-button:hover{
+    transition: rotate 0.5s ease-in;
+    rotate: 90deg;
+}
+
+.auth-button{
+    font-size: 24px;
+    padding: 6px 20px;
+    background-color: transparent;
+    color: white;
+    border: none;
+    border-radius: 6px;
+}
+
+.auth-buttons {
+    gap: 20px;
+}
+
+.auth-button:hover {
+    background-color: var(--tretiary-color-dark);
+    transition: background-color 0.1s linear;
+}

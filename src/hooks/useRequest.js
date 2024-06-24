@@ -24,3 +24,5 @@ function useRequest(url, method, data) {
 		return { loading, error, response };
 	}
 }
+
+export default useRequest;

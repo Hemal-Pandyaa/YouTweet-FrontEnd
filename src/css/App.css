@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+
+}
+
+:root {
+    --primary-color-dark: #2A2A2A;
+    --secondary-color-dark: #212121;
+    --tretiary-color-dark: #353535;
+    --primary-color-light: #F1F1F1;
+    --secondary-color-light: #C8C8C8;
+    --tretiary-color-light: #B6B6B6;
+}
+
+.primary-dark {
+    background-color: var(--primary-color-dark);
+}
+
+.secondary-dark {
+    background-color: var(--secondary-color-dark);
+}
+
+.tretiary-dark {
+    background-color: var(--tretiary-color-dark);
+}
+
+.primary-light {
+    background-color: var(--primary-color-light);
+}
+
+.secondary-light {
+    background-color: var(--secondary-color-light);
+}
+
+.tretiary-light {
+    background-color: var(--tretiary-color-light);
+}
+
