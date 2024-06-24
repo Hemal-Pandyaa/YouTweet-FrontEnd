@@ -1,28 +1,41 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-function useRequest(url, method, data) {
-	const [loading, setLoading] = useState(false);
-	const [error, setError] = useState(null);
-	const [response, setResponse] = useState(null);
-	try {
-		setLoading(true);
-		setError("");
-		const conrollter = new AbortController();
-		(async () => {
-			setResponse(await axios.request({ url, method, data, conrollter }));
-		})();
+function useRequest(url, method = "GET", data = null) {
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [response, setResponse] = useState(null);
 
-		conrollter.abort("No longer needed");
-	} catch (error) {
-		if (axios.isCancel(error)) {
-			return;
-		}
-		console.log(error);
-	} finally {
-		setLoading(false);
-		return { loading, error, response };
-	}
+  useEffect(() => {
+    const controller = new AbortController();
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        const res = await axios({
+          url,
+          method,
+          data,
+          signal: controller.signal,
+        });
+        setResponse(res.data);
+      } catch (error) {
+        if (!axios.isCancel(error)) {
+          setError(error);
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+
+    return () => {
+      controller.abort();
+    };
+  }, [url, method, data]);
+
+  return { loading, error, response };
 }
 
 export default useRequest;
